@@ -133,6 +133,7 @@ button:focus-visible, a:focus-visible {
 }
 
 .header-actions { display: flex; align-items: center; gap: 5px; }
+.repo-mark { font-family: "Fragment Mono", monospace; font-size: 9px; line-height: 1; letter-spacing: -0.04em; }
 
 .icon-button {
   width: 34px;
