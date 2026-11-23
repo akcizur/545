@@ -4,14 +4,7 @@
 
 545 is a compact interface-material laboratory.
 
-The visual language combines:
-
-- restrained editorial layout,
-- monochromatic color,
-- tactile glass surfaces,
-- precise animated edges,
-- generous whitespace,
-- small technical metadata.
+The visual language combines restrained editorial layout, monochromatic color, tactile glass surfaces, precise animated edges, generous whitespace and small technical metadata.
 
 The effects are the subject. The surrounding interface should stay quiet.
 
@@ -41,14 +34,15 @@ Use neutral grayscale only.
 
 Do not introduce saturated brand accents. Hierarchy comes from contrast, opacity, spacing and typography.
 
-## 3. Layout
+## 3. Layout and navigation
 
 - Main content width: 768px.
 - Header height: 58px.
 - Header and footer share the main content alignment.
 - Desktop content uses a two-column study row.
 - Mobile content stacks study copy above the live preview.
-- Keep the article-like canvas open; do not wrap the whole page in a dashboard card.
+- Navigation actions are consistent circular controls with a thin neutral edge.
+- Keep the page canvas open; do not wrap the whole page in a dashboard card.
 
 Whitespace is intentional. Do not fill it with extra controls or decoration.
 
@@ -66,31 +60,29 @@ Metadata is secondary and should not compete with the study title.
 
 ## 5. Glass surface
 
-The glass treatment uses:
-
-- translucent neutral fill,
-- a thin refractive edge,
-- two restrained inset highlights,
-- low shadow,
-- small backdrop blur,
-- a slow hover response,
-- a compressed active state.
+The glass treatment uses translucent neutral fill, a thin refractive edge, restrained inset highlights, low shadow, small backdrop blur, a slow hover response and a compressed active state.
 
 Avoid strong blur, large diffuse shadows or white highlights that erase text contrast.
 
 ## 6. Glow edge
 
-The glow treatment uses:
-
-- dark inset face,
-- one narrow animated monochrome rim,
-- a subtle pointer-following highlight,
-- a slow rotation,
-- compact press feedback.
+The glow treatment uses a dark inset face, one narrow animated monochrome rim, a subtle pointer-following highlight, a slow rotation and compact press feedback.
 
 No neon, hue cycling, external color interpolation or large ambient halo.
 
-## 7. Motion
+## 7. Search overlay
+
+- Search is a full-viewport modal overlay.
+- The page behind it is softened with a strong but restrained blur.
+- The search surface remains centered, translucent and compact.
+- The search field is the primary focus.
+- Result rows stay editorial and low-noise.
+- Escape closes the overlay and focus returns to its trigger.
+- Background scrolling is locked while search is open.
+- Backdrop click closes the overlay.
+- Keyboard focus stays inside the dialog.
+
+## 8. Motion
 
 Motion should feel deliberate rather than busy.
 
@@ -103,7 +95,7 @@ Motion should feel deliberate rather than busy.
 
 Touch devices must remain usable without hover.
 
-## 8. Interaction
+## 9. Interaction
 
 - Use semantic buttons for actions.
 - Keep the visible label readable above decorative layers.
@@ -112,24 +104,25 @@ Touch devices must remain usable without hover.
 - Do not imply a network operation or external service where none exists.
 - Preserve keyboard focus visibility.
 
-## 9. Component rules
+## 10. Component rules
 
 Every new component should define its role, visual variant, interaction behavior, mobile behavior, theme behavior, keyboard behavior and reduced-motion behavior.
 
 Prefer one shared component with explicit variants over duplicated button implementations.
 
-## 10. Anti-patterns
+## 11. Anti-patterns
 
 Avoid saturated gradients, neon glows, heavy glass blur, nested cards, full-width dashboard layouts, excessive pills, decorative badge clusters, high-frequency animation, large shadow stacks and controls without a real action.
 
-## 11. Review checklist
+## 12. Review checklist
 
 - [ ] Monochrome in both themes
 - [ ] Content width remains disciplined
+- [ ] Circular navigation controls align consistently
+- [ ] Search fills the viewport and blurs the page behind it
+- [ ] Search works with keyboard and pointer
 - [ ] Glass remains translucent, not opaque
 - [ ] Glow rim remains narrow and subtle
-- [ ] Pointer light tracks the active control only
-- [ ] Press feedback is visible
 - [ ] Focus-visible is clear
 - [ ] Reduced motion is respected
 - [ ] Mobile layout stacks cleanly

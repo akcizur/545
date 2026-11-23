@@ -19,6 +19,7 @@ This document describes the current implementation of 545. It is a map of existi
 │   ├── components/
 │   │   ├── MaterialButton.tsx
 │   │   ├── MaterialCard.tsx
+│   │   ├── SearchOverlay.tsx
 │   │   └── SiteHeader.tsx
 │   ├── config/materials.ts
 │   ├── data/materials.ts
@@ -41,14 +42,15 @@ This document describes the current implementation of 545. It is a map of existi
 |---|---|
 | index.html | HTML shell, metadata and pre-mount theme |
 | src/main.tsx | Font imports and React bootstrap |
-| src/App.tsx | Page composition and interaction counts |
-| src/components/SiteHeader.tsx | Brand, theme control and repository link |
+| src/App.tsx | Page composition, search visibility, keyboard shortcut and interaction counts |
+| src/components/SiteHeader.tsx | Brand, circular theme/search controls and repository link |
+| src/components/SearchOverlay.tsx | Full-screen overlay, search filtering, focus management and keyboard behavior |
 | src/components/MaterialCard.tsx | Study presentation, specs and status |
 | src/components/MaterialButton.tsx | Shared interactive button element |
 | src/config/materials.ts | Material variant type and labels |
 | src/data/materials.ts | Study descriptions, button labels and specs |
 | src/hooks/useTheme.ts | Theme state and localStorage persistence |
-| public/styles.css | Design tokens, button materials and responsive rules |
+| public/styles.css | Design tokens, components, overlay, button materials and responsive rules |
 | vite.config.ts | React plugin and GitHub Pages base path |
 | .github/workflows/deploy-pages.yml | Type check, build and deployment |
 | reference/ | Original HTML/CSS experiments retained for comparison |
@@ -63,20 +65,30 @@ src/main.tsx
 src/App.tsx
   ├── useTheme()
   ├── SiteHeader
+  │    └── open search
+  ├── SearchOverlay
+  │    ├── filter MATERIAL_STUDIES
+  │    ├── focus trap / Escape / backdrop click
+  │    └── navigate to material section
   └── MATERIAL_STUDIES
-        ↓
-     MaterialCard
-        ↓
-     MaterialButton
-        ↓
-     click / pointer events
-        ↓
-     local interaction count
+       ↓
+    MaterialCard
+       ↓
+    MaterialButton
+       ↓
+    click / pointer events
+       ↓
+    local interaction count
 ~~~
 
 ## 5. State
 
-App.tsx owns local activation counters: glass and glow. The counters are presentation state only. They reset when the page is reloaded and are not sent to a server.
+App.tsx owns:
+
+- local activation counters: glass and glow,
+- search overlay visibility.
+
+Activation counters are presentation state only. They reset when the page is reloaded and are not sent to a server.
 
 useTheme.ts owns:
 
@@ -84,6 +96,8 @@ useTheme.ts owns:
 - theme persistence under the 545-theme localStorage key,
 - document data-theme and color-scheme synchronization,
 - theme-color meta synchronization.
+
+SearchOverlay.tsx owns its query and filtered results. The result index is derived from MATERIAL_STUDIES and does not require an API.
 
 ## 6. Data and configuration
 
@@ -99,7 +113,11 @@ The project currently has two variants: glass and glow.
 
 ### SiteHeader
 
-Renders the 545 wordmark, theme toggle and GitHub link. It receives the current theme and an event callback through props.
+Renders the 545 wordmark, circular search and theme controls, and the GitHub link.
+
+### SearchOverlay
+
+Renders a viewport-sized blurred modal. It filters titles, descriptions, labels, notes and property values. It focuses its input on opening, locks background scrolling, traps keyboard focus, closes on Escape/backdrop and restores focus to the header trigger.
 
 ### MaterialCard
 
@@ -113,7 +131,7 @@ Renders the shared semantic button. The variant prop selects its CSS material. P
 
 public/styles.css is the single styling authority.
 
-It contains light/dark tokens, base styles, header and footer, hero and section typography, study layout, glass surface, glow edge, interaction feedback, responsive rules and reduced-motion rules.
+It contains light/dark tokens, base styles, header and footer, circular nav controls, hero and section typography, study layout, glass surface, glow edge, full-screen search overlay, interaction feedback, responsive rules and reduced-motion rules.
 
 Button decoration uses pseudo-elements and CSS custom properties. It does not require GSAP or Chroma.js.
 
@@ -140,6 +158,7 @@ The GitHub Actions workflow runs on push to main and manual dispatch. It uses No
 
 - The application is client-side and static.
 - There is no backend, API or database.
+- Search covers only the local material study data.
 - Generate and Activate are local interaction demonstrations.
 - Activation counts are not persisted.
 - Theme is the only persisted preference.

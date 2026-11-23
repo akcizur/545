@@ -1,12 +1,17 @@
-import { Moon, Sun } from 'lucide-react'
+import { Moon, Search, Sun } from 'lucide-react'
 import type { Theme } from '../hooks/useTheme'
 
 type SiteHeaderProps = {
   theme: Theme
   onToggleTheme: () => void
+  onOpenSearch: () => void
 }
 
-export default function SiteHeader({ theme, onToggleTheme }: SiteHeaderProps) {
+export default function SiteHeader({
+  theme,
+  onToggleTheme,
+  onOpenSearch,
+}: SiteHeaderProps) {
   const ThemeIcon = theme === 'dark' ? Sun : Moon
 
   return (
@@ -18,6 +23,18 @@ export default function SiteHeader({ theme, onToggleTheme }: SiteHeaderProps) {
         </a>
 
         <nav className="header-actions" aria-label="Main navigation">
+          <button
+            id="search-trigger"
+            className="icon-button"
+            type="button"
+            onClick={onOpenSearch}
+            aria-label="Search materials"
+            aria-haspopup="dialog"
+            aria-expanded="false"
+            title="Search"
+          >
+            <Search size={16} strokeWidth={1.8} />
+          </button>
           <button
             className="icon-button"
             type="button"
