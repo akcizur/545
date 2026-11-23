@@ -52,6 +52,7 @@ export default function App() {
           theme={theme}
           onToggleTheme={toggleTheme}
           onOpenSearch={openSearch}
+          searchOpen={searchOpen}
         />
 
         <main className="page-content">

@@ -87,6 +87,7 @@ export default function SearchOverlay({ onClose }: SearchOverlayProps) {
       onMouseDown={handleBackdropMouseDown}
     >
       <section
+        id="search-dialog"
         className="search-dialog"
         role="dialog"
         aria-modal="true"

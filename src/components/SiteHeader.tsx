@@ -5,12 +5,14 @@ type SiteHeaderProps = {
   theme: Theme
   onToggleTheme: () => void
   onOpenSearch: () => void
+  searchOpen: boolean
 }
 
 export default function SiteHeader({
   theme,
   onToggleTheme,
   onOpenSearch,
+  searchOpen,
 }: SiteHeaderProps) {
   const ThemeIcon = theme === 'dark' ? Sun : Moon
 
@@ -30,7 +32,8 @@ export default function SiteHeader({
             onClick={onOpenSearch}
             aria-label="Search materials"
             aria-haspopup="dialog"
-            aria-expanded="false"
+            aria-controls="search-dialog"
+            aria-expanded={searchOpen}
             title="Search"
           >
             <Search size={16} strokeWidth={1.8} />
