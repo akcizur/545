@@ -1,4 +1,4 @@
-import { Github, Moon, Sun } from 'lucide-react'
+import { Moon, Sun } from 'lucide-react'
 import type { Theme } from '../hooks/useTheme'
 
 type SiteHeaderProps = {
@@ -35,7 +35,7 @@ export default function SiteHeader({ theme, onToggleTheme }: SiteHeaderProps) {
             aria-label="Open 545 on GitHub"
             title="GitHub repository"
           >
-            <Github size={16} strokeWidth={1.8} />
+            <span className="repo-mark" aria-hidden="true">GH</span>
           </a>
         </nav>
       </div>
