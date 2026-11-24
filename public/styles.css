@@ -881,9 +881,9 @@ button:focus-visible, a:focus-visible {
 }
 
 
-/* Button geometry contract: circles or full pills only. */
+/* Strict button geometry: icon actions are circles, labeled actions are full pills. */
 button {
-  border-radius: 999px;
+  border-radius: 9999px;
 }
 
 .icon-button {
@@ -893,15 +893,13 @@ button {
   min-height: 38px;
   flex: 0 0 38px;
   aspect-ratio: 1;
+  padding: 0;
   border-radius: 50%;
 }
 
-.material-button {
-  border-radius: 999px;
-}
-
+.material-button,
 .search-clear {
-  border-radius: 999px;
+  border-radius: 9999px;
 }
 
 @media (max-width: 680px) {
