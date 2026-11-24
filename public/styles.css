@@ -105,16 +105,30 @@
 
 .search-clear {
   flex: 0 0 auto;
-  padding: 6px 0 6px 8px;
-  border: 0;
-  color: var(--text-soft);
-  background: transparent;
-  font-size: 11px;
+  min-height: 30px;
+  padding: 0 12px;
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  color: var(--text-muted);
+  background: var(--surface);
+  font-size: 10px;
+  line-height: 1;
   cursor: pointer;
+  transition:
+    color 220ms ease,
+    border-color 220ms ease,
+    background-color 220ms ease,
+    transform 220ms ease;
 }
 
 .search-clear:hover {
+  border-color: var(--border-strong);
   color: var(--text);
+  background: var(--surface-raised);
+}
+
+.search-clear:active {
+  transform: scale(0.96);
 }
 
 .search-results {
@@ -309,5 +323,39 @@
   .search-overlay,
   .search-dialog {
     animation: none;
+  }
+}
+
+
+/* Button geometry contract: circles or full pills only. */
+button {
+  border-radius: 999px;
+}
+
+.icon-button {
+  width: 38px;
+  height: 38px;
+  min-width: 38px;
+  min-height: 38px;
+  flex: 0 0 38px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+}
+
+.material-button {
+  border-radius: 999px;
+}
+
+.search-clear {
+  border-radius: 999px;
+}
+
+@media (max-width: 680px) {
+  .icon-button {
+    width: 35px;
+    height: 35px;
+    min-width: 35px;
+    min-height: 35px;
+    flex-basis: 35px;
   }
 }
