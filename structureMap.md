@@ -131,7 +131,7 @@ Renders the shared semantic button. The variant prop selects its CSS material. P
 
 public/styles.css is the single styling authority.
 
-It contains light/dark tokens, base styles, header and footer, circular nav controls, hero and section typography, study layout, glass surface, glow edge, full-screen search overlay, interaction feedback, responsive rules and reduced-motion rules.
+It contains light/dark tokens, base styles, header and footer, circle icon controls and pill action buttons, hero and section typography, study layout, glass surface, glow edge, full-screen search overlay, strict circle/pill button geometry, interaction feedback, responsive rules and reduced-motion rules.
 
 Button decoration uses pseudo-elements and CSS custom properties. It does not require GSAP or Chroma.js.
 
