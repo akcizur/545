@@ -46,6 +46,17 @@ Do not introduce saturated brand accents. Hierarchy comes from contrast, opacity
 
 Whitespace is intentional. Do not fill it with extra controls or decoration.
 
+### Mandatory button geometry
+
+There are exactly two allowed button silhouettes:
+
+- **Circle:** icon-only actions. Width and height must be equal, with `aspect-ratio: 1` and `border-radius: 50%`.
+- **Pill:** labeled actions. Use a capsule with `border-radius: 9999px`; the width may grow with its label.
+
+Never use square buttons, rounded rectangles, intermediate corner radii, or a different button silhouette on mobile, in overlays, or in forms. This applies to native buttons and links styled as controls.
+
+This rule applies to buttons only. Inputs, search fields, cards, dialogs and other content surfaces keep their own geometry.
+
 ## 4. Typography
 
 ### Google Sans
