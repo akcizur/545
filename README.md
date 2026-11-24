@@ -138,6 +138,13 @@ The header uses circular icon controls for:
 
 Search opens as a full-screen blurred overlay. It filters study titles, descriptions, labels, notes and property values. Results link directly to the matching material section.
 
+Button geometry is strict across the whole interface:
+
+- Icon-only controls are perfect circles.
+- Labeled actions are full capsule pills.
+- Rounded-rectangle and square buttons are not allowed.
+- This rule does not change the shape of inputs, cards or dialog surfaces.
+
 Keyboard behavior:
 
 - Ctrl+K / Cmd+K opens search.
